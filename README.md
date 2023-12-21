@@ -8,7 +8,7 @@ The resulting image will be stored in 8 bits in the 'G' channel. The value in th
 # 3. Transform the grayscale image obtained in the previous step by applying a sharpness filter, using the convolution matrix: {-1; -1; -1; -1; 9; -1; -1; -1; -1}.
 To calculate the value of the pixel at position [i, j], the 3×3 matrix surrounding this position is considered. Each element of this matrix is multiplied element-by-element with the convolution matrix (in the same way you would perform element-by-element multiplication in Matlab). The pixel at position [i, j] in the new image will be given by the sum of these 9 values.
 ---------------------------------------------------------------
-# Implementation  prerequisites
+# Implementation  details
 
 1. **Pixel Selection Signals (row and col)**: These signals are used for both reading and writing operations. They select a pixel in the image at the specified (row, col) position. To read a pixel from the image that is to be processed (in_pix), the row and col signals must be set.
 
