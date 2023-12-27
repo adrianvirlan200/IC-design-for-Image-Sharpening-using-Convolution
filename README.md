@@ -31,13 +31,13 @@ To calculate the value of the pixel at position [i, j], the 3×3 matrix surround
 
 The FSM is divided into a sequential part and a combinational part. State 0 is the reset state.
 
-MIRROR PHASE:
+**-> MIRROR PHASE**:
 The machine enters state 1 with row = 0 and col = 0. This pixel is saved in the variable aux_pixel1. The complementary element relative to the center of the matrix (63 - row) is determined. The machine then enters state 2 with row = 63 and col = 0. This pixel is saved in the variable aux_pixel2. In state 3, aux_pixel1 is written at position (63, 0). The row and column are reset to their original positions, after which aux_pixel2 is written in the matrix. New indices are determined by incrementing col until it reaches 63. When col reaches 63, it is reset to 0, and row is incremented. When row reaches (63 - 1)/2, the mirror algorithm ends and the flag is set to 1 in state 5.
 
-GRAYSCALE PHASE:
+**-> GRAYSCALE PHASE**:
 The machine enters state 6 with row and col at zero. The minimum and maximum values among the pixels are calculated, and this value is saved in the variable min. The machine then moves to state 7, where writing occurs at position (0, 0). New indices are determined: col is incremented until it reaches 63. When col reaches 63, it is reset to 0, and row is incremented. When row reaches 63, the grayscale algorithm ends, and the flag is set to 1 in state 8.
 
-SHARPNESS PHASE:
+**-> SHARPNESS PHASE**:
 To apply the convolution matrix, three lines from the original image are saved (cached) in the buffer [7:0]aux_row[2:0][63:0]. Another buffer [7:0]sharp_array[63:0] is used to save the result of the element-by-element multiplication of the sharpness matrix and an image block. This method was chosen because the convolution matrix is applied to the original image, not the modified one. Therefore, writing the newly calculated elements is delayed.
 
 The machine enters state 9, saving the first three lines of the original image. The index incrementation algorithm is similar to the first two stages. This state is for initializing the buffer and will not be revisited.
