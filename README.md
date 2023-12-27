@@ -1,6 +1,6 @@
 # IC design for Image Sharpening using Convolution
 
-In order to fulfill the requirement, we need to separate the process in 3 different stages:
+In order to fulfill the requirement, we need to separate the process into 3 different stages:
 
 ## 1.Perform the image transformation by mirroring  
 The mirroring will be done vertically, relative to the image rows.
