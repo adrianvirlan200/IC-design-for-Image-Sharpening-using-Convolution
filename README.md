@@ -25,7 +25,7 @@ To calculate the value of the pixel at position [i, j], the 3×3 matrix surround
 
 5. **Edge Pixels in Image Filtering**: The images are bounded. When applying the filter on edge pixels, only the immediate neighboring pixels are considered. Anything outside the image boundary is treated as zero.
 
-6. **Signal Maintenance (mirror_done, gray_done, filter_done)**: These signals must maintain a HIGH value for one clock cycle to be recognized by the tester. During this clock cycle, no other processing should be done, and the resolution of the next task should not begin.
+6. **Signal assertion duration (mirror_done, gray_done, filter_done)**: These signals must maintain a HIGH value for one clock cycle to be recognized by the tester. During this clock cycle, no other processing should be done, and the resolution of the next task should not begin.
 
 ------------------------------------------------------------------
 
